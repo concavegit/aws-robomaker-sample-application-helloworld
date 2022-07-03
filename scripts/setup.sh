@@ -8,13 +8,13 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-supported_ros_distros=("hawksbill")
+supported_ros_distros=("humble")
 
 install_ros(){
         echo "Installing ROS $ros_distro" 
         export DEBIAN_FRONTEND=noninteractive
 
-        #https://docs.ros.org/en/hawksbill/Installation/Ubuntu-Install-Debians.html
+        #https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
         #Install ROS Prerequisites
         locale  # check for UTF-8
 
@@ -102,8 +102,8 @@ then
 
 elif [ -z "$ros_distro" ];
 then
-        echo "No ROS Installation was found and no ROS Distro was specified.  Defaulting to installing ROS Hawksbill"
-        ros_distro="hawksbill"
+        echo "No ROS Installation was found and no ROS Distro was specified.  Defaulting to installing ROS humble"
+        ros_distro="humble"
         install_ros 
         source /opt/ros/$ros_distro/setup.bash
 elif [[  " ${supported_ros_distros[@]} " =~ " ${ros_distro} " ]]; #check if item in list
